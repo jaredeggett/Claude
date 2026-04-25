@@ -1,0 +1,115 @@
+1
+00:00:00,000 --> 00:00:03,000
+You raised a lobster.
+
+2
+00:00:03,000 --> 00:00:06,000
+A coding lobster.
+
+3
+00:00:06,000 --> 00:00:10,000
+You taught it everything.
+
+4
+00:00:10,000 --> 00:00:13,000
+Every morning you walk to your keyboard
+
+5
+00:00:13,000 --> 00:00:15,500
+and type the same prompt.
+
+6
+00:00:15,500 --> 00:00:17,000
+Summarize my inbox.
+
+7
+00:00:17,000 --> 00:00:18,500
+Deploy the code.
+
+8
+00:00:18,500 --> 00:00:20,000
+Run the script.
+
+9
+00:00:20,000 --> 00:00:22,000
+Twelve times a day. Every day. Forever.
+
+10
+00:00:22,000 --> 00:00:24,000
+OpenClawButton.
+
+11
+00:00:24,000 --> 00:00:28,000
+One button. No batteries.
+
+12
+00:00:28,000 --> 00:00:32,000
+You press it. Your finger powers it.
+
+13
+00:00:32,000 --> 00:00:35,000
+A wireless signal flies.
+
+14
+00:00:35,000 --> 00:00:38,000
+Your lobster wakes up and goes to work.
+
+15
+00:00:38,000 --> 00:00:40,500
+Press. Harvest. Broadcast. Run.
+
+16
+00:00:40,500 --> 00:00:48,000
+The same kinetic mechanism that's been in commercial light switches for twenty years.
+
+17
+00:00:48,000 --> 00:00:52,000
+Now it talks to your AI agent.
+
+18
+00:00:52,000 --> 00:00:55,500
+Stick one on your nightstand.
+
+19
+00:00:58,000 --> 00:01:01,000
+One on your monitor.
+
+20
+00:01:01,000 --> 00:01:03,500
+One by the door.
+
+21
+00:01:05,000 --> 00:01:08,000
+Every press feeds the lobster a different skill.
+
+22
+00:01:08,000 --> 00:01:10,500
+Open source SDK.
+
+23
+00:01:10,500 --> 00:01:13,000
+Published BLE spec.
+
+24
+00:01:13,000 --> 00:01:16,000
+Five lines of Python.
+
+25
+00:01:16,500 --> 00:01:18,500
+Hack it. Fork it.
+
+26
+00:01:18,500 --> 00:01:20,000
+Build whatever your lobster wants.
+
+27
+00:01:20,000 --> 00:01:22,000
+Live on Kickstarter.
+
+28
+00:01:26,000 --> 00:01:28,000
+First hundred backers feed at $19.99.
+
+29
+00:01:29,000 --> 00:01:30,000
+Feed your lobster.

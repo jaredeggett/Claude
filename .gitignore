@@ -1,0 +1,19 @@
+# Source footage and exports — too large for git, store on Cowork drive
+openclaw-video/01-source-footage/*.mov
+openclaw-video/01-source-footage/*.mp4
+openclaw-video/01-source-footage/*.wav
+openclaw-video/01-source-footage/sora-b-roll/*.mp4
+openclaw-video/03-final-deliverables/*.mp4
+openclaw-video/04-archive/raw-takes/*
+!openclaw-video/04-archive/raw-takes/.gitkeep
+
+# Project files (binary, large)
+openclaw-video/02-project-files/*.drp
+openclaw-video/02-project-files/*.prproj
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
