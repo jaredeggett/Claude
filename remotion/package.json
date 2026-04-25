@@ -1,0 +1,24 @@
+{
+  "name": "openclaw-promo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Programmatic Remotion render of the OpenClawButton 90s Kickstarter promo.",
+  "scripts": {
+    "start": "remotion studio",
+    "build": "remotion render OpenClawPromo out/openclaw-promo-90s-master-4k.mp4 --codec h264 --crf 18",
+    "build:1080": "remotion render OpenClawPromo out/openclaw-promo-90s-1080p.mp4 --codec h264 --crf 20 --width 1920 --height 1080",
+    "still": "remotion still OpenClawPromo out/poster.png --frame 60"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.0",
+    "@remotion/fonts": "4.0.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.4.5"
+  }
+}

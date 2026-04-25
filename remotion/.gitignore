@@ -1,0 +1,11 @@
+node_modules/
+out/
+.remotion/
+*.log
+
+# Source assets are version-controlled in openclaw-video/01-source-footage/
+# (or excluded entirely via the top-level .gitignore). Don't duplicate them
+# into public/ for git.
+public/*.wav
+public/*.mp4
+!public/README.md

@@ -15,16 +15,26 @@ OpenClawButton (openclawbutton.com).
   - `02-project-files/` — Resolve / Premiere project files
   - `03-final-deliverables/` — exported master and cutdowns
   - `04-archive/raw-takes/` — outtakes
+- `mockups/` — browser previews (open the HTML files locally)
+  - `storyboard-frames.html` — 8 static key frames, one per section
+  - `preview.html` — 90-second animated SVG playback (programmatic stand-in)
+- `scripts/` — shell pipelines
+  - `assemble.sh` — FFmpeg pipeline for master + 4 cutdowns
+- `remotion/` — TypeScript Remotion project for a programmatic render
 
 ## Start here
 
 1. Read `spec/OpenClawButtonWhiteboardVideoProduction.md` end to end.
-2. Walk through `openclaw-video/checklists/pre-production.md`.
-3. Generate Sora B-roll using `openclaw-video/prompts/`.
-4. Record VO using `openclaw-video/scripts/voiceover.md`.
-5. Shoot whiteboard footage per `openclaw-video/checklists/shoot-day.md`.
-6. Assemble in Resolve / Premiere using the storyboard.
-7. Run `openclaw-video/checklists/pre-flight.md` before publishing.
+2. Open `mockups/preview.html` in a browser to see a 90-second animated
+   placeholder of the full timeline.
+3. Walk through `openclaw-video/checklists/pre-production.md`.
+4. Generate Sora B-roll using `openclaw-video/prompts/`.
+5. Record VO using `openclaw-video/scripts/voiceover.md`.
+6. Shoot whiteboard footage per `openclaw-video/checklists/shoot-day.md`.
+7. Assemble: either run `scripts/assemble.sh` (FFmpeg pipeline) once you
+   have raw inputs, or use the Remotion project under `remotion/` for a
+   programmatic render.
+8. Run `openclaw-video/checklists/pre-flight.md` before publishing.
 
 ## Locked elements
 
