@@ -4,6 +4,8 @@ openclaw-video/01-source-footage/*.mp4
 openclaw-video/01-source-footage/*.wav
 openclaw-video/01-source-footage/sora-b-roll/*.mp4
 openclaw-video/03-final-deliverables/*.mp4
+# Track the small asset-free preview render so it ships with the repo.
+!openclaw-video/03-final-deliverables/openclaw-promo-90s-preview-1080p.mp4
 openclaw-video/04-archive/raw-takes/*
 !openclaw-video/04-archive/raw-takes/.gitkeep
 
