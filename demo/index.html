@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinetiq — The presentation clicker that never needs batteries | Egghead Labs</title>
+  <meta name="description" content="Kinetiq by Egghead Labs is a battery-free kinetic presentation clicker. Every click powers itself. No charging, no dead batteries — ever." />
+  <meta property="og:title" content="Kinetiq — Never change a clicker battery again" />
+  <meta property="og:description" content="A battery-free presentation clicker powered entirely by the kinetic energy of your click." />
+  <meta property="og:url" content="https://eggheadlabs.net/demo" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9A%A1</text></svg>" />
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="brand" href="#top" aria-label="Kinetiq home">
+        <span class="brand__mark">⚡</span>
+        <span class="brand__name">Kinetiq</span>
+        <span class="brand__by">by Egghead&nbsp;Labs</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#specs">Specs</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn--sm" href="#preorder">Pre-order</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <span class="eyebrow">Battery-free · Kinetic-powered</span>
+          <h1>The clicker that <span class="grad">never</span> needs batteries.</h1>
+          <p class="lede">
+            Kinetiq harvests the energy of your own click. Every press generates the
+            power it needs to fire — so there's nothing to charge, nothing to replace,
+            and nothing to die three slides before the close.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--lg" href="#preorder">Pre-order — $79</a>
+            <a class="btn btn--ghost btn--lg" href="#how">See how it works</a>
+          </div>
+          <ul class="hero__badges">
+            <li>♾️ Infinite clicks</li>
+            <li>🔋 Zero batteries</li>
+            <li>🌿 Zero e-waste</li>
+          </ul>
+        </div>
+
+        <!-- CSS device + click demo -->
+        <div class="hero__device">
+          <div class="device" id="device" role="button" tabindex="0" aria-label="Press to see Kinetiq harvest energy">
+            <div class="device__body">
+              <div class="device__pulse" id="pulse"></div>
+              <div class="device__screen">
+                <span class="device__charge" id="chargeLabel">Press ▸</span>
+                <div class="device__meter"><span id="meterFill"></span></div>
+              </div>
+              <button class="device__btn device__btn--next" data-key="next" aria-label="Next slide">▸</button>
+              <button class="device__btn device__btn--prev" data-key="prev" aria-label="Previous slide">◂</button>
+            </div>
+            <p class="device__hint">Click a button 👆</p>
+          </div>
+          <p class="counter">Self-powered clicks this session: <strong id="clickCount">0</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="band">
+      <div class="wrap band__grid">
+        <div>
+          <h2>Dead batteries have ruined enough presentations.</h2>
+          <p class="muted">
+            The average conference room clicker dies at the worst possible moment —
+            and nobody ever has the right coin cell in the drawer. Kinetiq removes the
+            battery entirely, so the failure mode simply doesn't exist.
+          </p>
+        </div>
+        <ul class="stat-row">
+          <li><strong>0</strong><span>batteries, forever</span></li>
+          <li><strong>~2M</strong><span>rated clicks per unit</span></li>
+          <li><strong>15&nbsp;yr</strong><span>expected service life</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="wrap section">
+      <div class="section__head">
+        <span class="eyebrow">The kinetic engine</span>
+        <h2>Your click <em>is</em> the power supply.</h2>
+        <p class="muted">
+          Inside every Kinetiq is a miniature electrodynamic generator — the same
+          principle as a bicycle dynamo, shrunk to the size of a fingertip.
+        </p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__n">01</span>
+          <h3>Press</h3>
+          <p>Your click drives a magnet across a coil, snapping the magnetic field from one state to the other.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">02</span>
+          <h3>Generate</h3>
+          <p>That abrupt flux change induces a clean voltage pulse — a few hundred microjoules, harvested instantly.</p>
+        </li>
+        <li class="step">
+          <span class="step__n">03</span>
+          <h3>Transmit</h3>
+          <p>The pulse powers a low-energy 2.4&nbsp;GHz radio that fires your Next / Back command to the receiver.</p>
+        </li>
+      </ol>
+      <p class="footnote">No supercapacitor top-ups. No sleep-drain. If your finger has energy, so does Kinetiq.</p>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="band">
+      <div class="wrap section">
+        <div class="section__head">
+          <span class="eyebrow">Why presenters switch</span>
+          <h2>Built to disappear into the talk.</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <span class="card__ico">♾️</span>
+            <h3>Truly maintenance-free</h3>
+            <p>No batteries, no charging cable, no dock. Take it out of the drawer and it just works — year after year.</p>
+          </article>
+          <article class="card">
+            <span class="card__ico">⚡</span>
+            <h3>Instant wake</h3>
+            <p>Because the click generates the power, there's no wake-from-sleep lag. Every press registers the moment you make it.</p>
+          </article>
+          <article class="card">
+            <span class="card__ico">🔌</span>
+            <h3>Plug-and-present</h3>
+            <p>A tiny USB-C receiver pairs out of the box. Works with Keynote, PowerPoint, Google Slides and any HID-friendly app.</p>
+          </article>
+          <article class="card">
+            <span class="card__ico">🌿</span>
+            <h3>Zero e-waste</h3>
+            <p>No coin cells leaking into landfill. One Kinetiq outlives dozens of disposable-battery clickers.</p>
+          </article>
+          <article class="card">
+            <span class="card__ico">🎯</span>
+            <h3>Green laser pointer</h3>
+            <p>A kinetic-primed capacitor stores a few clicks of reserve to drive a bright 520&nbsp;nm pointer on demand.</p>
+          </article>
+          <article class="card">
+            <span class="card__ico">🛡️</span>
+            <h3>Sealed &amp; rugged</h3>
+            <p>With no battery door to fail, the shell is fully sealed — dust-proof, drop-tested, conference-bag-proof.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="wrap section">
+      <div class="section__head">
+        <span class="eyebrow">Kinetiq vs. the drawer clicker</span>
+        <h2>Same job. None of the batteries.</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <thead>
+            <tr><th>&nbsp;</th><th class="hl">Kinetiq</th><th>Traditional clicker</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Power source</td><td class="hl">Your click (kinetic)</td><td>AAA / coin cell</td></tr>
+            <tr><td>Battery replacements</td><td class="hl">Never</td><td>Every few months</td></tr>
+            <tr><td>Dies mid-talk</td><td class="hl">Impossible</td><td>Inevitably</td></tr>
+            <tr><td>Charging</td><td class="hl">None needed</td><td>Cable or spares</td></tr>
+            <tr><td>Lifetime e-waste</td><td class="hl">~0 cells</td><td>Dozens of cells</td></tr>
+            <tr><td>Wake-up lag</td><td class="hl">None</td><td>Common</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SPECS -->
+    <section id="specs" class="band">
+      <div class="wrap section">
+        <div class="section__head">
+          <span class="eyebrow">Technical</span>
+          <h2>Specifications</h2>
+        </div>
+        <dl class="specs">
+          <div><dt>Power</dt><dd>Electrodynamic kinetic harvester — self-generating, batteryless</dd></div>
+          <div><dt>Energy / click</dt><dd>~300&nbsp;µJ harvested per press</dd></div>
+          <div><dt>Wireless</dt><dd>2.4&nbsp;GHz proprietary low-energy link, ~30&nbsp;m range</dd></div>
+          <div><dt>Receiver</dt><dd>USB-C nano-dongle, HID plug-and-play</dd></div>
+          <div><dt>Controls</dt><dd>Next · Back · Blackout · Laser</dd></div>
+          <div><dt>Compatibility</dt><dd>macOS, Windows, Linux, ChromeOS</dd></div>
+          <div><dt>Laser</dt><dd>520&nbsp;nm green, Class&nbsp;2, kinetic-reserve driven</dd></div>
+          <div><dt>Rated life</dt><dd>~2,000,000 clicks (≈15&nbsp;years typical use)</dd></div>
+          <div><dt>Body</dt><dd>Sealed recycled-aluminium shell, 34&nbsp;g</dd></div>
+          <div><dt>In the box</dt><dd>Kinetiq · USB-C receiver · travel pouch</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- PREORDER -->
+    <section id="preorder" class="wrap section">
+      <div class="preorder">
+        <div class="preorder__copy">
+          <span class="eyebrow">Egghead Labs · Ships Q4 2026</span>
+          <h2>Reserve your Kinetiq.</h2>
+          <p class="muted">
+            Founding-batch pre-orders ship first and lock in launch pricing. No battery
+            required — not now, not ever.
+          </p>
+          <ul class="ticks">
+            <li>Free shipping on the founding batch</li>
+            <li>2-year no-quibble warranty</li>
+            <li>30-day return, no restocking fee</li>
+          </ul>
+        </div>
+        <form class="preorder__form" id="preorderForm" novalidate>
+          <div class="price"><span class="price__num">$79</span><span class="price__note">launch price · $99 after</span></div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@company.com" required autocomplete="email" />
+          <button class="btn btn--lg btn--block" type="submit">Reserve for $79</button>
+          <p class="form__msg" id="formMsg" role="status" aria-live="polite"></p>
+          <p class="form__fine">This is a concept demo — no payment is taken and no email is stored.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="band">
+      <div class="wrap section section--narrow">
+        <div class="section__head">
+          <span class="eyebrow">Questions</span>
+          <h2>Frequently asked</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>So there's really no battery at all?</summary>
+            <p>Correct. Kinetiq has no battery and no rechargeable cell. The mechanical energy of pressing a button is converted into just enough electricity to send the command. If you can click it, it has power.</p>
+          </details>
+          <details>
+            <summary>How can a laser pointer run without a battery?</summary>
+            <p>A small capacitor banks the energy from your clicks. Hold the laser button and Kinetiq spends that kinetic reserve to drive the pointer. A few clicks buys you a burst of laser time — then a few more clicks tops it back up.</p>
+          </details>
+          <details>
+            <summary>Does the receiver need charging?</summary>
+            <p>No. The USB-C nano-receiver draws its trickle of power from the laptop it's plugged into — the presenter unit is the batteryless part.</p>
+          </details>
+          <details>
+            <summary>What software does it work with?</summary>
+            <p>Anything that accepts a standard keyboard clicker: Keynote, PowerPoint, Google Slides, PDF viewers, and most video tools. The receiver enumerates as a plain HID device — no drivers.</p>
+          </details>
+          <details>
+            <summary>What's the range?</summary>
+            <p>About 30&nbsp;metres line-of-sight on the 2.4&nbsp;GHz link — comfortably more than any conference stage.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div>
+        <a class="brand brand--footer" href="#top">
+          <span class="brand__mark">⚡</span>
+          <span class="brand__name">Kinetiq</span>
+        </a>
+        <p class="muted">A battery-free kinetic presentation clicker by Egghead&nbsp;Labs.</p>
+        <p class="url">eggheadlabs.net/demo</p>
+      </div>
+      <nav class="footer__cols">
+        <div>
+          <h4>Product</h4>
+          <a href="#how">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#specs">Specs</a>
+          <a href="#preorder">Pre-order</a>
+        </div>
+        <div>
+          <h4>Egghead Labs</h4>
+          <a href="#top">About</a>
+          <a href="#faq">FAQ</a>
+          <a href="#preorder">Contact</a>
+        </div>
+      </nav>
+    </div>
+    <div class="wrap footer__base">
+      <span>© 2026 Egghead Labs. Kinetiq is a concept demo.</span>
+      <span>Built without a single battery. ⚡</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
