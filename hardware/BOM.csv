@@ -1,0 +1,31 @@
+group,ref,part,description,qty,unit_cost_usd,ext_cost_usd,notes
+MCU,U1,Seeed XIAO ESP32C6,"Wi-Fi 6 / BLE / 802.15.4 module, 21x17.5mm",1,8.00,8.00,Keeps Matter/Thread path open for v2
+Sensing,U2-U3,MCP23017,"16-ch I2C GPIO expander, INT output",2,1.30,2.60,0x20 main board / 0x21 spine board
+Sensing,S1-S7,DRV5032FA,"Digital hall sensor SOT-23, 1.3uA @ 20Hz - POD PRESENCE",7,0.60,4.20,Main PCB under bay floors
+Sensing,S8-S14,DRV5032FA,"Digital hall sensor SOT-23, 1.3uA @ 20Hz - LID STATE",7,0.60,4.20,Spine PCB at hinge height
+Sensing,-,Reed switch SPST (alt),"Drop-in alternative to DRV5032 - footprint accepts both",0,0.20,0.00,Fallback only; see DESIGN-PLAN section 3.2
+Magnets,M1-M7,N52 disc 4x2mm,Pod presence magnet,7,0.30,2.10,"Press-fit 4.1 x 2.2mm pocket + CA"
+Magnets,M8-M14,N52 disc 4x2mm,Lid state magnet,7,0.30,2.10,Upsize to 5x2mm if Phase 2 gap margin is thin
+Timekeeping,U4,DS3231SN,I2C RTC with TCXO,1,2.50,2.50,Local timestamps survive Wi-Fi outage
+Timekeeping,BT1,CR2032 + holder,RTC backup cell,1,0.60,0.60,
+Feedback,D1-D7,WS2812B-5050,Addressable RGB bay uplight,7,0.25,1.75,Shines up through printed diffuser disc into clear pod
+Feedback,D8,WS2812B-5050,System status LED,1,0.25,0.25,Front strip
+Feedback,LS1,Passive piezo buzzer 12mm,Audible reminder,1,0.90,0.90,Front strip behind grille
+Input,SW1,Tactile switch 6mm,Refill mode (hold 3s),1,0.20,0.20,Mandatory - see DESIGN-PLAN section 6.2
+Input,SW2,Tactile switch 6mm,Acknowledge / snooze,1,0.20,0.20,
+Power,J1,USB-C receptacle breakout,5V input,1,1.50,1.50,
+Power,-,USB-C PSU 5V 1A,Mains supply,1,6.00,6.00,
+Power,C1-C6,Passives kit,"Decoupling caps, pull-ups, 470R WS2812 series R",1,2.00,2.00,
+Power,-,TP4056 + 2000mAh LiPo,OPTIONAL outage ride-through / portability,0,8.00,0.00,Not in base build
+Interconnect,J2,JST-XH 4-pin pair + wire,I2C link tray main PCB to spine PCB,1,0.80,0.80,VCC / GND / SDA / SCL
+PCB,PCB1,Main board,"JLCPCB 2-layer, 5-off minimum order",1,10.00,10.00,First-unit cost; marginal units ~0
+PCB,PCB2,Spine strip board,"JLCPCB 2-layer, 5-off minimum order",1,5.00,5.00,First-unit cost; marginal units ~0
+Fasteners,-,M3 heat-set insert,Brass threaded insert,8,0.15,1.20,4 bottom plate + 4 spine
+Fasteners,-,M3x8 socket screw,Bottom plate,4,0.10,0.40,
+Fasteners,-,M3x10 socket screw,Spine to tray rear,4,0.10,0.40,
+Fasteners,-,Silicone bumper foot,Anti-slip feet,4,0.25,1.00,
+Mechanical,-,PLA/PETG filament 1.75mm offcut,Hinge pins cut to 34mm,7,0.00,0.00,Scrap filament - free
+Printing,-,Clear PETG filament,"Pods + lids, ~120g",1,3.50,3.50,Hardened/stainless nozzle required
+Printing,-,Opaque PETG or ASA filament,"Tray + spine, ~130g",1,3.50,3.50,ASA if hot-car exposure expected
+Printing,-,Natural/translucent PETG,"7 diffuser discs, <5g",1,0.20,0.20,
+Finishing,-,Clear UV resin or 2-part epoxy,Optional flood coat for optical clarity,1,0.00,0.00,Only if clarity coupon says PETG alone is insufficient
