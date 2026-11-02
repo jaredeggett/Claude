@@ -13,7 +13,7 @@ import json
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent
 IMG = ROOT / "images"
@@ -30,11 +30,20 @@ ROLE_COLORS = {  # marker ring colors on the burned-in images
 }
 
 
-def prepare_images(sources):
+def prepare_images(sources, photos):
+    """Resize the originals and blur any `redact` boxes (e.g. brand names)."""
     IMG.mkdir(exist_ok=True)
     for name, src in sources.items():
         im = Image.open(src).convert("RGB")
         im.thumbnail((LONG_SIDE, LONG_SIDE), Image.LANCZOS)
+        photo = photos[name]
+        kx, ky = im.width / photo["size"][0], im.height / photo["size"][1]
+        for x0, y0, x1, y1 in photo.get("redact", []):
+            box = tuple(int(v) for v in (x0 * kx, y0 * ky, x1 * kx, y1 * ky))
+            patch = im.crop(box)
+            small = patch.resize((max(1, patch.width // 12), max(1, patch.height // 12)))
+            patch = small.resize(patch.size).filter(ImageFilter.GaussianBlur(4))
+            im.paste(patch, box)
         im.save(IMG / f"{name}.jpg", quality=82, optimize=True)
 
 
@@ -212,7 +221,7 @@ def build_readme(data, labeled, callouts=None):
         "# Phil: the hardware-engineering robot",
         "",
         "Phil is an AI agent with a body: a rolling wire cart that holds a computer",
-        "running Claude, cameras so it can see, and programmers, radios and I/O boards",
+        "running Claude, cameras so it can see, and firmware programmers, radios and I/O boards",
         "so it can flash, probe and switch real hardware on its own. These photos are",
         "labeled so anyone can tell what each part is and what it does for Phil.",
         "",
@@ -380,7 +389,7 @@ footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--lin
   </header>
   <div class="hero">{{HERO}}</div>
   <section class="intro">
-    <p class="lede">Phil is an AI agent with a body. The cart holds a computer running Claude, cameras so he can see, and programmers, radios and I/O boards so he can wire up, flash and test real hardware with as little human help as possible. Every part is grouped by the job it does for him.</p>
+    <p class="lede">Phil is an AI agent with a body. The cart holds a computer running Claude, cameras so he can see, and firmware programmers, radios and I/O boards so he can wire up, reprogram and test real hardware with as little human help as possible. Every part is grouped by the job it does for him.</p>
     <ul class="roles">{{ROLES}}</ul>
     <p class="hint">Below, tap a number on a photo, or a part in the list, to read what it does. Tap a role above to show only those parts.</p>
   </section>
@@ -425,7 +434,8 @@ footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--lin
 def main():
     data = json.loads((ROOT / "labels.json").read_text())
     if len(sys.argv) == 3:
-        prepare_images({"overview": sys.argv[1], "closeup": sys.argv[2]})
+        prepare_images({"overview": sys.argv[1], "closeup": sys.argv[2]},
+                       {p["id"]: p for p in data["photos"]})
     labeled = {p["id"]: burn_labels(p) for p in data["photos"]}
     subtitles = {"overview": "the AI hardware-engineering robot",
                  "closeup": "test shelves up close"}

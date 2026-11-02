@@ -10,7 +10,7 @@
     },
     "hands": {
       "name": "Hands",
-      "blurb": "Programmers, radios and I/O boards Phil uses to flash, probe and switch hardware."
+      "blurb": "Firmware programmers, radios and I/O boards. The programmers stay attached, so Phil can reprogram devices on the fly."
     },
     "maker": {
       "name": "Switch tester",
@@ -140,8 +140,8 @@
               "x": 600,
               "y": 1250,
               "role": "hands",
-              "name": "Programmer panel",
-              "desc": "Pegboard with the debug programmers and radio tools. See the close-up photo, items 19 to 24."
+              "name": "Firmware programmer panel",
+              "desc": "Pegboard of firmware programmers and radio tools. They stay attached to the devices, so Phil can reprogram them on the fly between tests. See the close-up photo, items 19 to 24."
             },
             {
               "n": 12,
@@ -156,8 +156,8 @@
               "x": 950,
               "y": 1360,
               "role": "test",
-              "name": "ETC Tester panel",
-              "desc": "Pegboard test fixture: an Arduino-driven breadboard wired to mains and 0-10 V lighting circuits. See the close-up, items 27 to 33."
+              "name": "Lighting test panel",
+              "desc": "Pegboard test fixture: an Arduino-driven breadboard wired to mains and 0-10 V lighting circuits, with firmware programmers attached so the devices can be reprogrammed during a test. See the close-up, items 27 to 33."
             },
             {
               "n": 14,
@@ -206,12 +206,20 @@
             }
           ]
         }
+      ],
+      "redact": [
+        [
+          896,
+          1394,
+          994,
+          1422
+        ]
       ]
     },
     {
       "id": "closeup",
       "title": "Test shelves up close",
-      "caption": "Looking down at the programmer panel, the ETC Tester and the gateway panel.",
+      "caption": "Looking down at the programmer panel, the lighting test panel and the gateway panel.",
       "source": "closeup.jpg",
       "size": [
         2000,
@@ -227,7 +235,7 @@
               "y": 212,
               "role": "hands",
               "name": "SEGGER J-Link EDU",
-              "desc": "Labeled \"J-Link-EDU Programmer\". Debug probe for flashing and debugging ARM microcontrollers."
+              "desc": "Labeled \"J-Link-EDU Programmer\". Debug probe for flashing and debugging ARM microcontrollers. Stays attached so Phil can reflash firmware on the fly."
             },
             {
               "n": 20,
@@ -264,7 +272,7 @@
               "y": 425,
               "role": "hands",
               "name": "ST-LINK programmer",
-              "desc": "White stick with the ST logo and a red LED. Programs and debugs STM32 microcontrollers."
+              "desc": "White stick with the ST logo and a red LED. Programs and debugs STM32 microcontrollers. Stays attached so Phil can reflash firmware on the fly."
             },
             {
               "n": 24,
@@ -294,7 +302,7 @@
           ]
         },
         {
-          "name": "ETC Tester panel",
+          "name": "Lighting test panel",
           "items": [
             {
               "n": 27,
@@ -388,7 +396,15 @@
       "callout": {
         "crop_h": 1080,
         "split_x": 880
-      }
+      },
+      "redact": [
+        [
+          1200,
+          570,
+          1420,
+          614
+        ]
+      ]
     }
   ],
   "poster": {
@@ -442,14 +458,14 @@
         "x": 600,
         "y": 1255,
         "role": "hands",
-        "name": "Programmers & radios",
-        "desc": "His hands: flash chips, sniff wireless traffic, measure signals"
+        "name": "Firmware programmers",
+        "desc": "Stay attached, so Phil can reprogram devices on the fly"
       },
       {
         "x": 950,
         "y": 1360,
         "role": "test",
-        "name": "ETC Tester",
+        "name": "Lighting test panel",
         "desc": "Arduino rig that switches and dims lighting circuits"
       },
       {
