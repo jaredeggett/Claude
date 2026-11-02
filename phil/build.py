@@ -57,7 +57,87 @@ def burn_labels(photo):
     return out.name
 
 
-def build_readme(data, labeled):
+def _spread(ys, gap, top, bottom):
+    """Push sorted label positions apart by at least `gap`, kept within bounds."""
+    out = []
+    for y in ys:
+        out.append(max(y, top) if not out else max(y, out[-1] + gap))
+    if out and out[-1] > bottom:
+        out[-1] = bottom
+        for i in range(len(out) - 2, -1, -1):
+            out[i] = min(out[i], out[i + 1] - gap)
+    return out
+
+
+def build_callouts(photo, roles, subtitle):
+    """Photo with part names written beside it, leader lines and a title banner."""
+    im = Image.open(IMG / photo["source"]).convert("RGB")
+    sw, sh = photo["size"]
+    kx, ky = im.width / sw, im.height / sh
+    opts = photo.get("callout", {})
+    if "crop_h" in opts:  # trim empty floor below the parts
+        im = im.crop((0, 0, im.width, int(opts["crop_h"] * ky)))
+    fs = 30
+    f_name = ImageFont.truetype(FONT, fs)
+    f_num = ImageFont.truetype(FONT, int(fs * 0.85))
+    f_title = ImageFont.truetype(FONT, 110)
+    f_sub = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 38)
+    f_key = ImageFont.truetype(FONT, 28)
+    margin, head, pad = 560, 250, 40
+    W, H = im.width + 2 * margin, im.height + head + pad
+    bg, fg, muted, tape = (243, 244, 246), (22, 24, 29), (91, 98, 112), (245, 217, 10)
+    canvas = Image.new("RGB", (W, H), bg)
+    canvas.paste(im, (margin, head))
+    d = ImageDraw.Draw(canvas)
+
+    # Title banner
+    d.text((pad, 40), "Meet Phil", font=f_title, fill=fg)
+    tw = d.textlength("Meet Phil", font=f_title)
+    d.text((pad + tw + 36, 72), subtitle, font=f_sub, fill=muted)
+    kx0, ky0 = pad, 180
+    for k, r in roles.items():
+        c = ROLE_COLORS[k]
+        d.ellipse([kx0, ky0 + 4, kx0 + 26, ky0 + 30], fill=c)
+        d.text((kx0 + 36, ky0), r["name"], font=f_key, fill=fg)
+        kx0 += 36 + d.textlength(r["name"], font=f_key) + 48
+
+    items = [it for g in photo["groups"] for it in g["items"]]
+    mid = opts.get("split_x", sw / 2)
+    sides = {"left": [i for i in items if i["x"] < mid], "right": [i for i in items if i["x"] >= mid]}
+    gap = fs + 26
+    for side, its in sides.items():
+        its.sort(key=lambda i: i["y"])
+        ys = _spread([head + i["y"] * ky for i in its], gap, head + fs, H - pad - fs)
+        for it, ly in zip(its, ys):
+            px, py = margin + it["x"] * kx, head + it["y"] * ky
+            color = ROLE_COLORS[it["role"]]
+            name = it["name"] + (" (?)" if it.get("confirm") else "")
+            num = str(it["n"])
+            nw = d.textlength(num, font=f_num) + 20
+            namew = d.textlength(name, font=f_name)
+            if side == "left":
+                x0 = margin - 24 - namew - 12 - nw
+                anchor_x = margin - 14
+            else:
+                x0 = margin + im.width + 24
+                anchor_x = margin + im.width + 14
+            # number tape + name
+            d.rectangle([x0, ly - fs * 0.62, x0 + nw, ly + fs * 0.62], fill=tape)
+            d.text((x0 + nw / 2, ly), num, font=f_num, fill=fg, anchor="mm")
+            d.text((x0 + nw + 12, ly), name, font=f_name, fill=fg, anchor="lm")
+            # leader line: margin -> photo edge -> part
+            edge_x = margin if side == "left" else margin + im.width
+            d.line([(anchor_x, ly), (edge_x, ly)], fill=fg, width=3)
+            d.line([(edge_x, ly), (px, py)], fill=(15, 15, 15), width=6)
+            d.line([(edge_x, ly), (px, py)], fill=color, width=3)
+            d.ellipse([px - 11, py - 11, px + 11, py + 11], fill=(255, 255, 255))
+            d.ellipse([px - 8, py - 8, px + 8, py + 8], fill=color)
+    out = IMG / photo["source"].replace(".jpg", "-callouts.jpg")
+    canvas.save(out, quality=84, optimize=True)
+    return out.name
+
+
+def build_readme(data, labeled, callouts=None):
     roles = data["roles"]
     lines = [
         "# Phil: the hardware-engineering robot",
@@ -69,6 +149,10 @@ def build_readme(data, labeled):
         "",
         "Open `index.html` for the interactive version (tap a number to see what it is).",
         "",
+    ]
+    for p in data["photos"]:
+        lines += [f"![Meet Phil: {p['title']}](images/{callouts[p['id']]})", ""]
+    lines += [
         "## How Phil is organized",
         "",
         "| Role | What it does |",
@@ -98,7 +182,7 @@ def build_readme(data, labeled):
     (ROOT / "README.md").write_text("\n".join(lines))
 
 
-def build_html(data):
+def build_html(data, callouts):
     roles = data["roles"]
     e = html.escape
     role_key = "".join(
@@ -136,7 +220,12 @@ def build_html(data):
     <div class="legend">{"".join(legend)}</div>
   </div>
 </section>''')
-    page = TEMPLATE.replace("{{ROLES}}", role_key).replace("{{SECTIONS}}", "".join(sections))
+    hero = "".join(
+        f'<figure class="callout"><img src="images/{callouts[p["id"]]}" '
+        f'alt="Meet Phil: {e(p["title"])}, with every part named"></figure>'
+        for p in data["photos"])
+    page = (TEMPLATE.replace("{{ROLES}}", role_key).replace("{{SECTIONS}}", "".join(sections))
+            .replace("{{HERO}}", hero))
     (ROOT / "index.html").write_text(page)
 
 
@@ -168,6 +257,9 @@ body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--display);
 h1 { font-size: clamp(40px, 7vw, 72px); line-height: .95; margin: 0; font-weight: 800; letter-spacing: -.02em; text-wrap: balance }
 h1 .tape { font-size: .5em; vertical-align: middle; margin-left: .3em }
 .lede { font-size: 18px; margin: 0; color: var(--fg) }
+.hero { display: grid; gap: 24px }
+.callout { margin: 0; overflow-x: auto; border-radius: 6px; border: 1px solid var(--line) }
+.callout img { display: block; width: 100%; min-width: 760px; max-width: none; height: auto }
 .roles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; max-width: none }
 .role { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: baseline; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; cursor: pointer }
 .role span:last-child { grid-column: 2; color: var(--muted); font-size: 13.5px }
@@ -216,10 +308,13 @@ footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--lin
   <header class="intro">
     <div class="eyebrow">Hardware lab · rolling test cart</div>
     <h1>Meet Phil <span class="tape">AI robot</span></h1>
+  </header>
+  <div class="hero">{{HERO}}</div>
+  <section class="intro">
     <p class="lede">Phil is an AI agent with a body. The cart holds a computer running Claude, cameras so he can see, and programmers, radios and I/O boards so he can wire up, flash and test real hardware with as little human help as possible. Every part is grouped by the job it does for him.</p>
     <ul class="roles">{{ROLES}}</ul>
-    <p class="hint">Tap a number on a photo, or a part in the list, to find it. Tap a role above to show only those parts.</p>
-  </header>
+    <p class="hint">Below, tap a number on a photo, or a part in the list, to read what it does. Tap a role above to show only those parts.</p>
+  </section>
   {{SECTIONS}}
   <footer>Parts tagged <b>confirm</b> were identified from the photo only. Labels live in <code>phil/labels.json</code>; run <code>python3 phil/build.py</code> to rebuild this page and the labeled images.</footer>
 </div>
@@ -263,9 +358,13 @@ def main():
     if len(sys.argv) == 3:
         prepare_images({"overview": sys.argv[1], "closeup": sys.argv[2]})
     labeled = {p["id"]: burn_labels(p) for p in data["photos"]}
-    build_readme(data, labeled)
-    build_html(data)
-    print("built", ", ".join(labeled.values()), "README.md, index.html")
+    subtitles = {"overview": "the AI hardware-engineering robot",
+                 "closeup": "test shelves up close"}
+    callouts = {p["id"]: build_callouts(p, data["roles"], subtitles.get(p["id"], p["title"]))
+                for p in data["photos"]}
+    build_readme(data, labeled, callouts)
+    build_html(data, callouts)
+    print("built", ", ".join([*labeled.values(), *callouts.values()]), "README.md, index.html")
 
 
 if __name__ == "__main__":

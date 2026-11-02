@@ -26,6 +26,9 @@ body { background: var(--bg); color: var(--fg); font: 15px/1.55 var(--display);
 h1 { font-size: clamp(40px, 7vw, 72px); line-height: .95; margin: 0; font-weight: 800; letter-spacing: -.02em; text-wrap: balance }
 h1 .tape { font-size: .5em; vertical-align: middle; margin-left: .3em }
 .lede { font-size: 18px; margin: 0; color: var(--fg) }
+.hero { display: grid; gap: 24px }
+.callout { margin: 0; overflow-x: auto; border-radius: 6px; border: 1px solid var(--line) }
+.callout img { display: block; width: 100%; min-width: 760px; max-width: none; height: auto }
 .roles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; max-width: none }
 .role { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; align-items: baseline; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; cursor: pointer }
 .role span:last-child { grid-column: 2; color: var(--muted); font-size: 13.5px }
@@ -74,10 +77,13 @@ footer { color: var(--muted); font-size: 13.5px; border-top: 1px solid var(--lin
   <header class="intro">
     <div class="eyebrow">Hardware lab · rolling test cart</div>
     <h1>Meet Phil <span class="tape">AI robot</span></h1>
+  </header>
+  <div class="hero"><figure class="callout"><img src="images/overview-callouts.jpg" alt="Meet Phil: The whole cart, with every part named"></figure><figure class="callout"><img src="images/closeup-callouts.jpg" alt="Meet Phil: Test shelves up close, with every part named"></figure></div>
+  <section class="intro">
     <p class="lede">Phil is an AI agent with a body. The cart holds a computer running Claude, cameras so he can see, and programmers, radios and I/O boards so he can wire up, flash and test real hardware with as little human help as possible. Every part is grouped by the job it does for him.</p>
     <ul class="roles"><li class="role" data-role="brain"><span class="dot"></span><b>Brain</b><span>Computer and AI agent that plans the work and drives everything else.</span></li><li class="role" data-role="eyes"><span class="dot"></span><b>Eyes</b><span>Cameras so Phil can see LEDs, prints and wiring without a person looking.</span></li><li class="role" data-role="hands"><span class="dot"></span><b>Hands</b><span>Programmers, radios and I/O boards Phil uses to flash, probe and switch hardware.</span></li><li class="role" data-role="maker"><span class="dot"></span><b>Maker</b><span>Fabrication: Phil can print his own enclosures, brackets and fixtures.</span></li><li class="role" data-role="test"><span class="dot"></span><b>Under test</b><span>Test fixtures and the lighting-control devices being tested.</span></li><li class="role" data-role="power"><span class="dot"></span><b>Power</b><span>Mains power, wiring and the cart itself.</span></li></ul>
-    <p class="hint">Tap a number on a photo, or a part in the list, to find it. Tap a role above to show only those parts.</p>
-  </header>
+    <p class="hint">Below, tap a number on a photo, or a part in the list, to read what it does. Tap a role above to show only those parts.</p>
+  </section>
   
 <section class="photo" id="overview">
   <header class="photo-head"><h2>The whole cart</h2><p>Front view of Phil, top shelf to casters.</p></header>

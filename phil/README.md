@@ -7,6 +7,10 @@ labeled so anyone can tell what each part is and what it does for Phil.
 
 Open `index.html` for the interactive version (tap a number to see what it is).
 
+![Meet Phil: The whole cart](images/overview-callouts.jpg)
+
+![Meet Phil: Test shelves up close](images/closeup-callouts.jpg)
+
 ## How Phil is organized
 
 | Role | What it does |
