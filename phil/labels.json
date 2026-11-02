@@ -6,15 +6,15 @@
     },
     "eyes": {
       "name": "Eyes",
-      "blurb": "Cameras so Phil can see LEDs, prints and wiring without a person looking."
+      "blurb": "Cameras so Phil can see LEDs, switch presses and wiring without a person looking."
     },
     "hands": {
       "name": "Hands",
       "blurb": "Programmers, radios and I/O boards Phil uses to flash, probe and switch hardware."
     },
     "maker": {
-      "name": "Maker",
-      "blurb": "Fabrication: Phil can print his own enclosures, brackets and fixtures."
+      "name": "Switch tester",
+      "blurb": "A 3D printer used as a robot finger: it moves to a light switch and presses it, over and over, to test it."
     },
     "test": {
       "name": "Under test",
@@ -45,7 +45,7 @@
               "y": 345,
               "role": "eyes",
               "name": "Overhead camera arm",
-              "desc": "Articulating \"magic arm\" (orange locking knobs) clamped to the top shelf, holding small USB cameras that look down over the desk and printer."
+              "desc": "Articulating \"magic arm\" (orange locking knobs) clamped to the top shelf, holding small USB cameras that look down over the desk and the switch-testing printer."
             },
             {
               "n": 2,
@@ -53,7 +53,7 @@
               "y": 710,
               "role": "eyes",
               "name": "Center camera arm",
-              "desc": "Second magic arm hanging from the shelf with two webcams. Gives Phil a view of the work surface and the printer bed."
+              "desc": "Second magic arm hanging from the shelf with two webcams. Gives Phil a view of the work surface and the switch on the printer bed."
             }
           ]
         },
@@ -98,16 +98,16 @@
               "x": 1000,
               "y": 800,
               "role": "maker",
-              "name": "Creality 3D printer",
-              "desc": "Creality bed-slinger (looks like an Ender-3 V3 series) with a knob-and-screen controller. A small white printed box sits on the bed."
+              "name": "Switch-pressing 3D printer",
+              "desc": "Creality 3D printer (looks like an Ender-3 V3 series) used only to test light switches. Phil moves the print head onto the switch mounted on the bed to press it, the same way every time."
             },
             {
               "n": 8,
               "x": 1135,
               "y": 931,
               "role": "eyes",
-              "name": "Printer camera",
-              "desc": "Webcam on a short arm aimed at the print bed so Phil can watch prints and catch failures."
+              "name": "Switch-test camera",
+              "desc": "Webcam on a short arm aimed at the printer bed so Phil can watch each switch press and see the result."
             }
           ]
         },
@@ -401,7 +401,7 @@
         "y": 360,
         "role": "eyes",
         "name": "Cameras",
-        "desc": "His eyes on the bench and the prints"
+        "desc": "His eyes on every test"
       },
       {
         "x": 490,
@@ -414,8 +414,8 @@
         "x": 1000,
         "y": 800,
         "role": "maker",
-        "name": "3D printer",
-        "desc": "Prints his own enclosures and fixtures"
+        "name": "Switch tester",
+        "desc": "A 3D printer that presses light switches to test them"
       },
       {
         "x": 250,

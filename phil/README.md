@@ -16,9 +16,9 @@ Open `index.html` for the interactive version (tap a number to see what it is).
 | Role | What it does |
 | --- | --- |
 | **Brain** | Computer and AI agent that plans the work and drives everything else. |
-| **Eyes** | Cameras so Phil can see LEDs, prints and wiring without a person looking. |
+| **Eyes** | Cameras so Phil can see LEDs, switch presses and wiring without a person looking. |
 | **Hands** | Programmers, radios and I/O boards Phil uses to flash, probe and switch hardware. |
-| **Maker** | Fabrication: Phil can print his own enclosures, brackets and fixtures. |
+| **Switch tester** | A 3D printer used as a robot finger: it moves to a light switch and presses it, over and over, to test it. |
 | **Under test** | Test fixtures and the lighting-control devices being tested. |
 | **Power** | Mains power, wiring and the cart itself. |
 
@@ -32,8 +32,8 @@ Front view of Phil, top shelf to casters.
 
 | # | Part | Role | What it is |
 | --- | --- | --- | --- |
-| 1 | Overhead camera arm | Eyes | Articulating "magic arm" (orange locking knobs) clamped to the top shelf, holding small USB cameras that look down over the desk and printer. |
-| 2 | Center camera arm | Eyes | Second magic arm hanging from the shelf with two webcams. Gives Phil a view of the work surface and the printer bed. |
+| 1 | Overhead camera arm | Eyes | Articulating "magic arm" (orange locking knobs) clamped to the top shelf, holding small USB cameras that look down over the desk and the switch-testing printer. |
+| 2 | Center camera arm | Eyes | Second magic arm hanging from the shelf with two webcams. Gives Phil a view of the work surface and the switch on the printer bed. |
 
 ### Desk shelf
 
@@ -43,8 +43,8 @@ Front view of Phil, top shelf to casters.
 | 4 | Keyboard and mouse | Brain | For people to step in. Day to day, Phil works through the computer without them. |
 | 5 | Powered USB hub | Hands | Multi-port hub with yellow-tagged cables. Fans the computer out to the programmers, cameras and boards on the shelves below. |
 | 6 | Red board on black case *(confirm)* | Hands | A red development board sitting on a black enclosure, connected by USB. Not labeled in the photo; confirm what it is. |
-| 7 | Creality 3D printer | Maker | Creality bed-slinger (looks like an Ender-3 V3 series) with a knob-and-screen controller. A small white printed box sits on the bed. |
-| 8 | Printer camera | Eyes | Webcam on a short arm aimed at the print bed so Phil can watch prints and catch failures. |
+| 7 | Switch-pressing 3D printer | Switch tester | Creality 3D printer (looks like an Ender-3 V3 series) used only to test light switches. Phil moves the print head onto the switch mounted on the bed to press it, the same way every time. |
+| 8 | Switch-test camera | Eyes | Webcam on a short arm aimed at the printer bed so Phil can watch each switch press and see the result. |
 
 ### Computer shelf
 
