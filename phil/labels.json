@@ -1,0 +1,147 @@
+{
+  "roles": {
+    "brain": {"name": "Brain", "blurb": "Computer and AI agent that plans the work and drives everything else."},
+    "eyes":  {"name": "Eyes", "blurb": "Cameras so Phil can see LEDs, prints and wiring without a person looking."},
+    "hands": {"name": "Hands", "blurb": "Programmers, radios and I/O boards Phil uses to flash, probe and switch hardware."},
+    "maker": {"name": "Maker", "blurb": "Fabrication: Phil can print his own enclosures, brackets and fixtures."},
+    "test":  {"name": "Under test", "blurb": "Test fixtures and the lighting-control devices being tested."},
+    "power": {"name": "Power", "blurb": "Mains power, wiring and the cart itself."}
+  },
+  "photos": [
+    {
+      "id": "overview",
+      "title": "The whole cart",
+      "caption": "Front view of Phil, top shelf to casters.",
+      "source": "overview.jpg",
+      "size": [1506, 2000],
+      "groups": [
+        {
+          "name": "Top shelf and camera arms",
+          "items": [
+            {"n": 1, "x": 1060, "y": 345, "role": "eyes", "name": "Overhead camera arm",
+             "desc": "Articulating \"magic arm\" (orange locking knobs) clamped to the top shelf, holding small USB cameras that look down over the desk and printer."},
+            {"n": 2, "x": 860, "y": 710, "role": "eyes", "name": "Center camera arm",
+             "desc": "Second magic arm hanging from the shelf with two webcams. Gives Phil a view of the work surface and the printer bed."}
+          ]
+        },
+        {
+          "name": "Desk shelf",
+          "items": [
+            {"n": 3, "x": 490, "y": 700, "role": "brain", "name": "Monitor running Claude",
+             "desc": "Acer monitor showing the Claude desktop app on macOS. The open sessions are Phil's projects (EnOcean 902 MHz module, CC1310 sniffer, BLE switch OTA from phone, LabJack status, unattended-loop runs)."},
+            {"n": 4, "x": 500, "y": 965, "role": "brain", "name": "Keyboard and mouse",
+             "desc": "For people to step in. Day to day, Phil works through the computer without them."},
+            {"n": 5, "x": 250, "y": 912, "role": "hands", "name": "Powered USB hub",
+             "desc": "Multi-port hub with yellow-tagged cables. Fans the computer out to the programmers, cameras and boards on the shelves below."},
+            {"n": 6, "x": 406, "y": 893, "role": "hands", "name": "Red board on black case", "confirm": true,
+             "desc": "A red development board sitting on a black enclosure, connected by USB. Not labeled in the photo; confirm what it is."},
+            {"n": 7, "x": 1000, "y": 800, "role": "maker", "name": "Creality 3D printer",
+             "desc": "Creality bed-slinger (looks like an Ender-3 V3 series) with a knob-and-screen controller. A small white printed box sits on the bed."},
+            {"n": 8, "x": 1135, "y": 931, "role": "eyes", "name": "Printer camera",
+             "desc": "Webcam on a short arm aimed at the print bed so Phil can watch prints and catch failures."}
+          ]
+        },
+        {
+          "name": "Computer shelf",
+          "items": [
+            {"n": 9, "x": 317, "y": 1064, "role": "brain", "name": "Mac mini",
+             "desc": "Phil's computer. Runs Claude Code and every tool that talks to the hardware."},
+            {"n": 10, "x": 405, "y": 1164, "role": "hands", "name": "Tethered phone",
+             "desc": "Smartphone plugged in over USB, used to test phone apps such as BLE switch updates sent from a phone."}
+          ]
+        },
+        {
+          "name": "Test shelves",
+          "items": [
+            {"n": 11, "x": 600, "y": 1250, "role": "hands", "name": "Programmer panel",
+             "desc": "Pegboard with the debug programmers and radio tools. See the close-up photo, items 19 to 24."},
+            {"n": 12, "x": 538, "y": 1329, "role": "eyes", "name": "Close-up camera",
+             "desc": "Webcam on a magic arm pointed at the boards so Phil can read LEDs and check status."},
+            {"n": 13, "x": 950, "y": 1360, "role": "test", "name": "ETC Tester panel",
+             "desc": "Pegboard test fixture: an Arduino-driven breadboard wired to mains and 0-10 V lighting circuits. See the close-up, items 27 to 33."},
+            {"n": 14, "x": 1169, "y": 1384, "role": "power", "name": "Surge strip \"A-17\"",
+             "desc": "Prime surge-protected power strip with a lighted switch. Feeds the test panels."},
+            {"n": 15, "x": 493, "y": 1507, "role": "test", "name": "Gateway panel",
+             "desc": "Bottom pegboard with a wireless lighting gateway (red ring light), a 0-10 V controller and a breadboard."},
+            {"n": 16, "x": 264, "y": 1505, "role": "hands", "name": "Arduino \"EBL-CL-0001\"",
+             "desc": "Small red Arduino-style board on a breadboard, labeled arduino EBL-CL-0001. Switches or simulates inputs for the gateway panel."}
+          ]
+        },
+        {
+          "name": "Bottom of the cart",
+          "items": [
+            {"n": 17, "x": 750, "y": 1780, "role": "power", "name": "Main power cord",
+             "desc": "White cord that powers the whole cart. In these photos the plug is lying on the floor, not in the wall."},
+            {"n": 18, "x": 215, "y": 1815, "role": "power", "name": "Locking casters",
+             "desc": "Chrome wire shelving rack on locking wheels, so Phil can be rolled to wherever the work is."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "closeup",
+      "title": "Test shelves up close",
+      "caption": "Looking down at the programmer panel, the ETC Tester and the gateway panel.",
+      "source": "closeup.jpg",
+      "size": [2000, 1500],
+      "groups": [
+        {
+          "name": "Programmer panel (back)",
+          "items": [
+            {"n": 19, "x": 300, "y": 212, "role": "hands", "name": "SEGGER J-Link EDU",
+             "desc": "Labeled \"J-Link-EDU Programmer\". Debug probe for flashing and debugging ARM microcontrollers."},
+            {"n": 20, "x": 486, "y": 95, "role": "hands", "name": "EnOcean Bridge",
+             "desc": "Black USB device labeled \"EnOcean Bridge\". Lets the computer send and receive EnOcean wireless telegrams."},
+            {"n": 21, "x": 545, "y": 170, "role": "hands", "name": "TI CC1310 radio",
+             "desc": "Small board with a green LED, labeled TI CC1310. Sub-GHz radio used as a sniffer to capture 902 MHz traffic."},
+            {"n": 22, "x": 795, "y": 220, "role": "test", "name": "ILLUMRA module",
+             "desc": "White ILLUMRA lighting-control module (an EnOcean-based product line) wired into the test circuits."}
+          ]
+        },
+        {
+          "name": "Programmer panel (front)",
+          "items": [
+            {"n": 23, "x": 360, "y": 425, "role": "hands", "name": "ST-LINK programmer",
+             "desc": "White stick with the ST logo and a red LED. Programs and debugs STM32 microcontrollers."},
+            {"n": 24, "x": 520, "y": 470, "role": "hands", "name": "LabJack T4",
+             "desc": "Red USB data-acquisition box. Gives Phil analog and digital I/O to measure voltages and toggle signals."},
+            {"n": 25, "x": 165, "y": 490, "role": "test", "name": "White round device", "confirm": true,
+             "desc": "Round white puck under the camera, similar in style to the gateway. Confirm whether it is a sensor or a second gateway."},
+            {"n": 26, "x": 320, "y": 540, "role": "eyes", "name": "Close-up camera",
+             "desc": "Same camera as item 12, on its magic arm with an orange clamp knob."}
+          ]
+        },
+        {
+          "name": "ETC Tester panel",
+          "items": [
+            {"n": 27, "x": 793, "y": 550, "role": "hands", "name": "Arduino Nano",
+             "desc": "Blue Arduino Nano connected to the Mac by USB. The tester's controller: Phil sends it commands and it drives the channels next to it."},
+            {"n": 28, "x": 915, "y": 470, "role": "test", "name": "Driver channels",
+             "desc": "Breadboard with four small three-pin parts and resistors, likely transistor or optocoupler stages that let the Nano switch the circuits under test."},
+            {"n": 29, "x": 1000, "y": 375, "role": "power", "name": "Lever-nut connectors",
+             "desc": "Orange WAGO-style lever connectors and yellow wire nuts join the panel's wires without soldering, so Phil can rewire quickly."},
+            {"n": 30, "x": 1150, "y": 345, "role": "test", "name": "0-10 V control wires",
+             "desc": "Purple and gray pair printed \"CONTROL 0-10V\". The standard dimming signal used by commercial lighting."},
+            {"n": 31, "x": 1400, "y": 350, "role": "test", "name": "Smart receptacle",
+             "desc": "White outlet with an FCC ID label and screw terminals: a connected (wireless) receptacle being tested. A cord is plugged in as its load."},
+            {"n": 32, "x": 1229, "y": 491, "role": "test", "name": "4-button wireless switch",
+             "desc": "Small white module with four button pads. Looks like an EnOcean PTM-style self-powered switch used as a wireless sender."},
+            {"n": 33, "x": 1560, "y": 540, "role": "test", "name": "Black ring", "confirm": true,
+             "desc": "Round black core next to the wiring. Likely a ferrite or current-sense ring; confirm."}
+          ]
+        },
+        {
+          "name": "Gateway panel and floor",
+          "items": [
+            {"n": 34, "x": 186, "y": 802, "role": "test", "name": "0-10 V controller",
+             "desc": "White box labeled \"0-10v controller\". Turns wireless commands into a 0-10 V dimming signal."},
+            {"n": 35, "x": 382, "y": 798, "role": "test", "name": "Gateway",
+             "desc": "Round white wireless lighting gateway held down with cable ties. It shows a red ring light when powered."},
+            {"n": 36, "x": 820, "y": 975, "role": "power", "name": "Unplugged power cord",
+             "desc": "The end of the main power cord (item 17) lying on the floor."}
+          ]
+        }
+      ]
+    }
+  ]
+}
