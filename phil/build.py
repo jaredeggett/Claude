@@ -137,6 +137,75 @@ def build_callouts(photo, roles, subtitle):
     return out.name
 
 
+def build_poster(data):
+    """One shareable JPG: the cart photo, a Meet Phil title and a few key labels."""
+    spec = data["poster"]
+    photo = next(p for p in data["photos"] if p["id"] == spec["photo"])
+    im = Image.open(IMG / photo["source"]).convert("RGB")
+    sw, sh = photo["size"]
+    kx, ky = im.width / sw, im.height / sh
+    reg = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    f_name, f_desc = ImageFont.truetype(FONT, 38), ImageFont.truetype(reg, 27)
+    f_title, f_sub = ImageFont.truetype(FONT, 150), ImageFont.truetype(reg, 46)
+    bg, fg, muted = (243, 244, 246), (22, 24, 29), (91, 98, 112)
+    margin, head, pad, wrap_w = 640, 300, 50, 560
+    W, H = im.width + 2 * margin, im.height + head + pad
+    canvas = Image.new("RGB", (W, H), bg)
+    canvas.paste(im, (margin, head))
+    d = ImageDraw.Draw(canvas)
+    tw = d.textlength("Meet Phil", font=f_title)
+    d.text(((W - tw) / 2, 40), "Meet Phil", font=f_title, fill=fg)
+    sub = spec["subtitle"]
+    d.text(((W - d.textlength(sub, font=f_sub)) / 2, 210), sub, font=f_sub, fill=muted)
+
+    def wrap(text):
+        lines, cur = [], ""
+        for w in text.split():
+            t = (cur + " " + w).strip()
+            if d.textlength(t, font=f_desc) > wrap_w and cur:
+                lines.append(cur); cur = w
+            else:
+                cur = t
+        return lines + [cur]
+
+    items = spec["items"]
+    for side in ("left", "right"):
+        its = sorted([i for i in items if (i["x"] < sw / 2) == (side == "left")], key=lambda i: i["y"])
+        blocks = [(it, wrap(it["desc"])) for it in its]
+        heights = [50 + 34 * len(ls) for _, ls in blocks]
+        ys, prev = [], None
+        for (it, _), h in zip(blocks, heights):
+            y = head + it["y"] * ky - 22
+            if prev is not None:
+                y = max(y, prev)
+            ys.append(y); prev = y + h + 26
+        for (it, ls), y in zip(blocks, ys):
+            px, py = margin + it["x"] * kx, head + it["y"] * ky
+            color = ROLE_COLORS[it["role"]]
+            ly = y + 22  # line meets the name's middle
+            if side == "left":
+                right = margin - 30
+                d.text((right, ly), it["name"], font=f_name, fill=fg, anchor="rm")
+                for j, line in enumerate(ls):
+                    d.text((right, y + 52 + 34 * j), line, font=f_desc, fill=muted, anchor="ra")
+                edge = margin
+                d.line([(right + 10, ly), (edge, ly)], fill=fg, width=3)
+            else:
+                left = margin + im.width + 30
+                d.text((left, ly), it["name"], font=f_name, fill=fg, anchor="lm")
+                for j, line in enumerate(ls):
+                    d.text((left, y + 52 + 34 * j), line, font=f_desc, fill=muted, anchor="la")
+                edge = margin + im.width
+                d.line([(edge, ly), (left - 10, ly)], fill=fg, width=3)
+            d.line([(edge, ly), (px, py)], fill=(15, 15, 15), width=8)
+            d.line([(edge, ly), (px, py)], fill=color, width=4)
+            d.ellipse([px - 15, py - 15, px + 15, py + 15], fill=(255, 255, 255))
+            d.ellipse([px - 11, py - 11, px + 11, py + 11], fill=color)
+    out = ROOT / spec["file"]
+    canvas.save(out, quality=88, optimize=True)
+    return out.name
+
+
 def build_readme(data, labeled, callouts=None):
     roles = data["roles"]
     lines = [
@@ -362,6 +431,8 @@ def main():
                  "closeup": "test shelves up close"}
     callouts = {p["id"]: build_callouts(p, data["roles"], subtitles.get(p["id"], p["title"]))
                 for p in data["photos"]}
+    if "poster" in data:
+        print("poster", build_poster(data))
     build_readme(data, labeled, callouts)
     build_html(data, callouts)
     print("built", ", ".join([*labeled.values(), *callouts.values()]), "README.md, index.html")

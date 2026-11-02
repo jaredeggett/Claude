@@ -390,5 +390,82 @@
         "split_x": 880
       }
     }
-  ]
+  ],
+  "poster": {
+    "photo": "overview",
+    "file": "meet-phil.jpg",
+    "subtitle": "the AI robot that does hardware engineering",
+    "items": [
+      {
+        "x": 1060,
+        "y": 360,
+        "role": "eyes",
+        "name": "Cameras",
+        "desc": "His eyes on the bench and the prints"
+      },
+      {
+        "x": 490,
+        "y": 700,
+        "role": "brain",
+        "name": "Claude",
+        "desc": "His brain: plans the work, runs the tools"
+      },
+      {
+        "x": 1000,
+        "y": 800,
+        "role": "maker",
+        "name": "3D printer",
+        "desc": "Prints his own enclosures and fixtures"
+      },
+      {
+        "x": 250,
+        "y": 912,
+        "role": "hands",
+        "name": "USB hub",
+        "desc": "Connects the computer to every device"
+      },
+      {
+        "x": 317,
+        "y": 1064,
+        "role": "brain",
+        "name": "Mac mini",
+        "desc": "The computer Claude runs on"
+      },
+      {
+        "x": 405,
+        "y": 1164,
+        "role": "hands",
+        "name": "Phone",
+        "desc": "Tests phone apps over USB"
+      },
+      {
+        "x": 600,
+        "y": 1255,
+        "role": "hands",
+        "name": "Programmers & radios",
+        "desc": "His hands: flash chips, sniff wireless traffic, measure signals"
+      },
+      {
+        "x": 950,
+        "y": 1360,
+        "role": "test",
+        "name": "ETC Tester",
+        "desc": "Arduino rig that switches and dims lighting circuits"
+      },
+      {
+        "x": 493,
+        "y": 1507,
+        "role": "test",
+        "name": "Gateway test panel",
+        "desc": "Lighting gateway and 0-10 V dimmer"
+      },
+      {
+        "x": 215,
+        "y": 1815,
+        "role": "power",
+        "name": "Wheels",
+        "desc": "Rolls to wherever the work is"
+      }
+    ]
+  }
 }
